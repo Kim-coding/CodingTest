@@ -13,9 +13,11 @@ namespace Beakjoon
                     break;
 
                 int count = 0;
-                for(int i = n + 1;i<= 2 * n; i++)
+                bool[] isPrime = IsPrime(2 * n);
+
+                for (int i = n + 1;i <= 2 * n; i++)
                 {
-                    if (IsPrime(i))
+                    if (isPrime[i])
                         count++;
                 }
 
@@ -23,17 +25,20 @@ namespace Beakjoon
             }
         }
 
-        static bool IsPrime(int n)
+        static bool[] IsPrime(int max)
         {
-            if(n < 2)
-                return false;
-            for(int i = 2; i <= Math.Sqrt(n); i++)
+            bool[] isPrime = new bool[max+1];
+            for(int i = 2;  i <= max; i++)
+                isPrime[i] = true;
+            for(int i = 2; i*i <= max; i++)
             {
-                if(n % i == 0)
-                    return false;
+                if(isPrime[i])
+                {
+                    for( int j = i*i; j<=max; j += i)
+                        isPrime[j] = false;
+                }
             }
-            return true;
+            return isPrime;
         }
-
     }
 }
