@@ -37,11 +37,13 @@ public class Solution {
             int newX = x, newY = y;
             bool canMove = true;
             
-            for (int step = 1; step <= distance; step++) {
+            for (int step = 1; step <= distance; step++) 
+            {
                 int nextX = x + directions[direction].Item1 * step;
                 int nextY = y + directions[direction].Item2 * step;
 
-                if (nextX < 0 || nextX >= height || nextY < 0 || nextY >= width || park[nextX][nextY] == 'X') {
+                if (nextX < 0 || nextX >= height || nextY < 0 || nextY >= width || park[nextX][nextY] == 'X') 
+                {
                     canMove = false;
                     break;
                 }
@@ -49,7 +51,8 @@ public class Solution {
                 newY = nextY;
             }
             
-            if (canMove) {
+            if (canMove) 
+            {
                 x = newX;
                 y = newY;
             }
